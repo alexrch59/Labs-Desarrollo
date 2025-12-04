@@ -8,6 +8,14 @@
   margin-bottom: 24px;
 }
 
+.top-bar {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .category-filter {
   border: 1px solid #4a90e2;
   border-radius: 30px;
@@ -179,4 +187,23 @@
 
 .delete-btn {
   color: #000;
+}
+
+.refresh-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: #4a90e2;
+  color: #fff;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-btn:hover {
+  background: #357ab8;
 }

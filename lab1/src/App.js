@@ -19,6 +19,7 @@ function App() {
   });
   const [editId, setEditId] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
   const [filtroCategoria, setFiltroCategoria] = useState("");
 
   const productosRef = collection(db, "productos");
@@ -93,7 +94,17 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>CRUD Productos de Farmacia</h1>
+        <div className="top-bar">
+          <h1>CRUD Productos de Farmacia</h1>
+          <button
+            className="refresh-btn"
+            type="button"
+            aria-label="Actualizar productos"
+            onClick={() => setShowRefreshModal(true)}
+          >
+            ↻
+          </button>
+        </div>
         <div className="filtros-container">
           <select
             className="category-filter"
@@ -205,6 +216,36 @@ function App() {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {showRefreshModal && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Actualizar productos</h2>
+              <p>
+                Esta opción recarga la información de productos desde Firebase.
+              </p>
+              <div className="modal-actions">
+                <button
+                  type="button"
+                  aria-label="Cerrar"
+                  onClick={() => setShowRefreshModal(false)}
+                >
+                  ✕
+                </button>
+                <button
+                  type="button"
+                  aria-label="Actualizar lista de productos"
+                  onClick={() => {
+                    cargarProductos();
+                    setShowRefreshModal(false);
+                  }}
+                >
+                  Actualizar
+                </button>
+              </div>
             </div>
           </div>
         )}
